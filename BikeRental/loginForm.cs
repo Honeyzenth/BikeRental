@@ -20,75 +20,49 @@ namespace BikeRental
         }
         public static string sendtext = "";
 
-        
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
                 Connection.Connection.DB();
-                DBhelper.DBhelper.gen = "Select * from Customer_Signup where username = '" + txtUsername.Text + "' and password = '" + txtPassword.Text
-                    + "'";
-                DBhelper.DBhelper.command = new OleDbCommand(DBhelper.DBhelper.gen, Connection.Connection.conn);
+
+                string query = "SELECT password FROM Customer_Signup WHERE username = @username";
+                DBhelper.DBhelper.command = new OleDbCommand(query, Connection.Connection.conn);
+                DBhelper.DBhelper.command.Parameters.AddWithValue("@username", txtUsername.Text);
+
                 DBhelper.DBhelper.reader = DBhelper.DBhelper.command.ExecuteReader();
+
                 if (DBhelper.DBhelper.reader.HasRows)
                 {
                     DBhelper.DBhelper.reader.Read();
-                    txtUsername.Text = (DBhelper.DBhelper.reader["username"].ToString());
-                    txtPassword.Text = (DBhelper.DBhelper.reader["password"].ToString());
+                    string storedHashedPassword = DBhelper.DBhelper.reader["password"].ToString();
 
+                    Encryption encrypt = new Encryption();
+                    bool isValid = encrypt.VerifyPassword(txtPassword.Text, storedHashedPassword);
 
-                    sendtext = txtUsername.Text;
-
-
-
-                    timer1.Enabled = true;
-                    timer1.Start();
-                    timer1.Interval = 1;
-                    progressBar1.Maximum = 200;
-                    timer1.Tick += new EventHandler(timer1_Tick);
-
-                    
-
-
-
-                }
-                else if (txtUsername.Text != "admin" && txtPassword.Text != "admin")
-                {
-                    Connection.Connection.DB();
-                    DBhelper.DBhelper.gen = "Select * from Customer_Signup where username = '" + txtUsername.Text + "' and password = '" + txtPassword.Text
-                        + "'";
-                    DBhelper.DBhelper.command = new OleDbCommand(DBhelper.DBhelper.gen, Connection.Connection.conn);
-                    DBhelper.DBhelper.reader = DBhelper.DBhelper.command.ExecuteReader();
-                    if (DBhelper.DBhelper.reader.HasRows)
+                    if (isValid)
                     {
-                        DBhelper.DBhelper.reader.Read();
-                        txtUsername.Text = (DBhelper.DBhelper.reader["username"].ToString());
-                        txtPassword.Text = (DBhelper.DBhelper.reader["password"].ToString());
-
-
-                        /** info.fullname = DBhelper.DBhelper.reader["fullname"].ToString();
-                         info.email = DBhelper.DBhelper.reader["email"].ToString();
-                         info.phonenumber = DBhelper.DBhelper.reader["phonenumber"].ToString();
-                         info.address = DBhelper.DBhelper.reader["address"].ToString();*/
-
                         sendtext = txtUsername.Text;
-                        timer2.Enabled = true;
-                        timer2.Start();
-                        timer2.Interval = 1;
+
+                        timer1.Enabled = true;
+                        timer1.Start();
+                        timer1.Interval = 1;
                         progressBar1.Maximum = 200;
-                        timer2.Tick += new EventHandler(timer2_Tick);
-
-
-
-
+                        timer1.Tick += new EventHandler(timer1_Tick);
                     }
-                    else {
+                    else
+                    {
                         MessageBox.Show("Wrong Username or Password", "Invalid account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtPassword.Clear();
                     }
-                    Connection.Connection.conn.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Wrong Username or Password", "Invalid account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPassword.Clear();
+                }
+
+                Connection.Connection.conn.Close();
             }
             catch (Exception ex)
             {
@@ -103,13 +77,14 @@ namespace BikeRental
             {
                 progressBar1.Value++;
             }
-            else {
+            else
+            {
                 timer1.Stop();
                 progressBar1.Value = 0;
                 adminManage add = new adminManage();
                 add.Show();
                 this.Hide();
-               
+
 
             }
         }
@@ -136,7 +111,7 @@ namespace BikeRental
                 this.Hide();
 
             }
-           
+
         }
 
         private void loginForm_Load(object sender, EventArgs e)

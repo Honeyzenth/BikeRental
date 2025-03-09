@@ -17,31 +17,35 @@ namespace BikeRental
             InitializeComponent();
         }
         string sql = "";
-        
-            public static string fullname = "";
-            public static string email = "";
-            public static string phonenumber = "";
-            public static string address = "";
+
+        public static string fullname = "";
+        public static string email = "";
+        public static string phonenumber = "";
+        public static string address = "";
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
-
         {
-            
-            try {
+            try
+            {
                 if (txtPassword.Text != txtConfirmPassword.Text)
                 {
                     MessageBox.Show("Mismatched password ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CLEAR();
                 }
-                else if (txtFullname.Text == "" && txtEmail.Text == "" && txtPhoneNumber.Text == "" && txtAdd.Text == "" && txtUserName.Text == "" && txtPassword.Text == "" && txtConfirmPassword.Text == "")
+                else if (txtFullname.Text == "" || txtEmail.Text == "" || txtPhoneNumber.Text == "" || txtAdd.Text == "" || txtUserName.Text == "" || txtPassword.Text == "" || txtConfirmPassword.Text == "")
                 {
                     MessageBox.Show("fill up required field ", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CLEAR();
                 }
-                else {
+                else
+                {
+                    Encryption encrypt = new Encryption();
+                    string password = txtPassword.Text;
+                    string hashedPassword = encrypt.HashPassword(password);
+
                     sql = "INSERT INTO [Customer_Signup] ([username], [password], [Name], [Email], [PhoneNumber],[Address]  )" +
                         "VALUES('" + txtUserName.Text + "'," +
-                       "'" + txtPassword.Text + "', " +
+                       "'" + hashedPassword + "', " +
                        "'" + txtFullname.Text + "', " +
                         "'" + txtEmail.Text + "', " +
                         "'" + txtPhoneNumber.Text + "'," +
@@ -57,14 +61,15 @@ namespace BikeRental
                     L.Show();
                     this.Hide();
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
         public void CLEAR()
         {
-            txtConfirmPassword.Clear(); 
+            txtConfirmPassword.Clear();
         }
 
         private void Signup_FormClosing(object sender, FormClosingEventArgs e)
