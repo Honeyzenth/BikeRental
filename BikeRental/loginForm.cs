@@ -118,5 +118,12 @@ namespace BikeRental
         {
 
         }
+
+        private void lblForgotPwd_Click(object sender, EventArgs e)
+        {
+            ForgotPassword fp = new ForgotPassword();
+            fp.Show();
+            this.Hide();
+        }
     }
 }

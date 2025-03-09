@@ -41,6 +41,7 @@ namespace BikeRental
             this.label3 = new System.Windows.Forms.Label();
             this.btnSignup = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.lblForgotPwd = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -58,7 +59,7 @@ namespace BikeRental
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Silver;
             this.btnLogin.Font = new System.Drawing.Font("Bookman Old Style", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(610, 200);
+            this.btnLogin.Location = new System.Drawing.Point(610, 218);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(93, 29);
             this.btnLogin.TabIndex = 14;
@@ -122,7 +123,7 @@ namespace BikeRental
             // 
             this.btnSignup.BackColor = System.Drawing.Color.Silver;
             this.btnSignup.Font = new System.Drawing.Font("Bookman Old Style", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignup.Location = new System.Drawing.Point(772, 200);
+            this.btnSignup.Location = new System.Drawing.Point(772, 218);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(93, 29);
             this.btnSignup.TabIndex = 16;
@@ -134,6 +135,19 @@ namespace BikeRental
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // lblForgotPwd
+            // 
+            this.lblForgotPwd.AutoSize = true;
+            this.lblForgotPwd.BackColor = System.Drawing.Color.Transparent;
+            this.lblForgotPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForgotPwd.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblForgotPwd.Location = new System.Drawing.Point(667, 195);
+            this.lblForgotPwd.Name = "lblForgotPwd";
+            this.lblForgotPwd.Size = new System.Drawing.Size(144, 16);
+            this.lblForgotPwd.TabIndex = 17;
+            this.lblForgotPwd.Text = "Forgot your password?";
+            this.lblForgotPwd.Click += new System.EventHandler(this.lblForgotPwd_Click);
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +156,7 @@ namespace BikeRental
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(896, 346);
+            this.Controls.Add(this.lblForgotPwd);
             this.Controls.Add(this.btnSignup);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLogin);
@@ -172,5 +187,6 @@ namespace BikeRental
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSignup;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label lblForgotPwd;
     }
 }

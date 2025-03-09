@@ -9,5 +9,6 @@ namespace BikeRental
     public class DbConstants
     {
         public const string DB_DIRECTORY = "..\\..\\Database3.accdb";
+        public const string EMAIL = "honeyzenth@gmail.com";
     }
 }
