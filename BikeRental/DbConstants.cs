@@ -8,6 +8,6 @@ namespace BikeRental
 {
     public class DbConstants
     {
-        public const string DbDirectory = "D:\\HANNI\\BikeRental\\BikeRental\\Database3.accdb";
+        public const string DB_DIRECTORY = "..\\..\\Database3.accdb";
     }
 }
