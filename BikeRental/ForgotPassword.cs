@@ -45,13 +45,16 @@ namespace BikeRental
             {
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(EMAIL); // Your email
-                mail.To.Add(userEmail);
+                mail.To.Add(userEmail); // Recipient email
                 mail.Subject = "Your OTP for Password Reset";
-                mail.Body = $"Your OTP is: {generatedOTP}";
+                mail.Body = $"Your OTP is: {generatedOTP}.\nThis OTP will expire in 3 minutes.";
 
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587); // Gmail SMTP server
-                smtp.Credentials = new NetworkCredential("your-email@gmail.com", "your-email-password"); // Your email credentials
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(EMAIL, APP_PASSWORD); // Use App Password
                 smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
                 smtp.Send(mail);
 
                 MessageBox.Show("OTP sent to your email!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -60,7 +63,6 @@ namespace BikeRental
             {
                 MessageBox.Show("Error sending email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private bool EmailExists(string email)

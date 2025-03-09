@@ -119,6 +119,7 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtEmail);
             this.Name = "ForgotPassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForgotPassword";
             this.ResumeLayout(false);
             this.PerformLayout();

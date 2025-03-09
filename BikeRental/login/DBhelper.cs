@@ -49,7 +49,7 @@ namespace BikeRental.DBhelper
             catch (Exception ex)
             {
                 Connection.Connection.conn.Close();
-                MessageBox.Show("Error --->" + updates + ex.Message);
+                MessageBox.Show("Error --->" + ex.Message);
             }
         }
 
