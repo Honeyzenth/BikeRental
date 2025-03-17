@@ -46,6 +46,10 @@ namespace BikeRental
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnCreateAccount = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBoxAnswer = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSecurityAnswer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -102,7 +106,7 @@ namespace BikeRental
             this.label5.BackColor = System.Drawing.Color.Black;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.LightPink;
-            this.label5.Location = new System.Drawing.Point(99, 271);
+            this.label5.Location = new System.Drawing.Point(97, 323);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 21);
             this.label5.TabIndex = 5;
@@ -114,7 +118,7 @@ namespace BikeRental
             this.label6.BackColor = System.Drawing.Color.Black;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.LightPink;
-            this.label6.Location = new System.Drawing.Point(99, 309);
+            this.label6.Location = new System.Drawing.Point(97, 361);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 21);
             this.label6.TabIndex = 4;
@@ -126,7 +130,7 @@ namespace BikeRental
             this.label7.BackColor = System.Drawing.Color.Black;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.LightPink;
-            this.label7.Location = new System.Drawing.Point(99, 351);
+            this.label7.Location = new System.Drawing.Point(97, 403);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(148, 21);
             this.label7.TabIndex = 6;
@@ -167,7 +171,7 @@ namespace BikeRental
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(263, 271);
+            this.txtUserName.Location = new System.Drawing.Point(261, 323);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(152, 29);
             this.txtUserName.TabIndex = 11;
@@ -175,7 +179,7 @@ namespace BikeRental
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(263, 309);
+            this.txtPassword.Location = new System.Drawing.Point(261, 361);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(152, 29);
@@ -184,7 +188,7 @@ namespace BikeRental
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(263, 351);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(261, 403);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(152, 29);
@@ -195,7 +199,7 @@ namespace BikeRental
             this.btnCreateAccount.BackColor = System.Drawing.Color.SandyBrown;
             this.btnCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateAccount.ForeColor = System.Drawing.Color.Pink;
-            this.btnCreateAccount.Location = new System.Drawing.Point(165, 405);
+            this.btnCreateAccount.Location = new System.Drawing.Point(158, 439);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(157, 33);
             this.btnCreateAccount.TabIndex = 14;
@@ -214,12 +218,62 @@ namespace BikeRental
             this.label8.TabIndex = 15;
             this.label8.Text = "SIGN UP";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Black;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.LightPink;
+            this.label9.Location = new System.Drawing.Point(39, 259);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(145, 21);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Security Question";
+            // 
+            // comboBoxAnswer
+            // 
+            this.comboBoxAnswer.FormattingEnabled = true;
+            this.comboBoxAnswer.Items.AddRange(new object[] {
+            "What is your mother\'s maiden name?",
+            "What was the name of your first pet?",
+            "What is your favorite book?",
+            "What city were you born in?",
+            "What is your childhood best friend\'s name?"});
+            this.comboBoxAnswer.Location = new System.Drawing.Point(208, 259);
+            this.comboBoxAnswer.Name = "comboBoxAnswer";
+            this.comboBoxAnswer.Size = new System.Drawing.Size(180, 21);
+            this.comboBoxAnswer.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Black;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.LightPink;
+            this.label10.Location = new System.Drawing.Point(39, 290);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(132, 21);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Security Answer";
+            // 
+            // txtSecurityAnswer
+            // 
+            this.txtSecurityAnswer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSecurityAnswer.Location = new System.Drawing.Point(192, 288);
+            this.txtSecurityAnswer.Name = "txtSecurityAnswer";
+            this.txtSecurityAnswer.Size = new System.Drawing.Size(152, 29);
+            this.txtSecurityAnswer.TabIndex = 19;
+            // 
             // Signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(446, 450);
+            this.ClientSize = new System.Drawing.Size(446, 484);
+            this.Controls.Add(this.txtSecurityAnswer);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBoxAnswer);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.txtConfirmPassword);
@@ -263,5 +317,9 @@ namespace BikeRental
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnCreateAccount;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxAnswer;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtSecurityAnswer;
     }
 }

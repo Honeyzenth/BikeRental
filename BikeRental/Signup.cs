@@ -24,6 +24,15 @@ namespace BikeRental
         public static string phonenumber = "";
         public static string address = "";
 
+        private readonly string[] securityQuestions =
+        {
+            "What is your mother's maiden name?",
+            "What was the name of your first pet?",
+            "What is your favorite book?",
+            "What city were you born in?",
+            "What is your childhood best friend's name?"
+        };
+
         private bool IsPasswordComplex(string password)
         {
             // Password must be at least 8 characters long, contain an uppercase letter, 
@@ -45,7 +54,8 @@ namespace BikeRental
                 }
 
                 if (txtFullname.Text == "" || txtEmail.Text == "" || txtPhoneNumber.Text == "" ||
-                    txtAdd.Text == "" || txtUserName.Text == "" || txtPassword.Text == "" || txtConfirmPassword.Text == "")
+                    txtAdd.Text == "" || txtUserName.Text == "" || txtPassword.Text == "" || txtConfirmPassword.Text == "" ||
+                    comboBoxAnswer.SelectedIndex == -1 || txtSecurityAnswer.Text == "")
                 {
                     MessageBox.Show("Fill up required fields", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CLEAR();
@@ -65,13 +75,18 @@ namespace BikeRental
                 string password = txtPassword.Text;
                 string hashedPassword = encrypt.HashPassword(password);
 
-                sql = "INSERT INTO [Customer_Signup] ([username], [password], [Name], [Email], [PhoneNumber], [Address]) " +
+                string selectedQuestion = comboBoxAnswer.SelectedItem.ToString();
+                string encryptedAnswer = encrypt.HashPassword(txtSecurityAnswer.Text);
+
+                sql = "INSERT INTO [Customer_Signup] ([username], [password], [Name], [Email], [PhoneNumber], [Address], [SecurityQuestion], [SecurityAnswer]) " +
                       "VALUES('" + txtUserName.Text + "'," +
                       "'" + hashedPassword + "', " +
                       "'" + txtFullname.Text + "', " +
                       "'" + txtEmail.Text + "', " +
                       "'" + txtPhoneNumber.Text + "'," +
-                      "'" + txtAdd.Text + "')";
+                      "'" + txtAdd.Text + "', " +
+                      "'" + selectedQuestion + "', " +
+                      "'" + encryptedAnswer + "')";
 
                 DBhelper.DBhelper.ModifyRecord(sql);
                 MessageBox.Show("Account Created!");
