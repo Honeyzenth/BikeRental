@@ -44,6 +44,14 @@ namespace BikeRental
                     {
                         sendtext = txtUsername.Text;
 
+                        timer2.Enabled = true;
+                        timer2.Start();
+                        timer2.Interval = 1;
+                        progressBar1.Maximum = 200;
+                        timer2.Tick += new EventHandler(timer2_Tick);
+                    }
+                    else if (txtUsername.Text == "admin" && txtPassword.Text == "admin")
+                    {
                         timer1.Enabled = true;
                         timer1.Start();
                         timer1.Interval = 1;
@@ -55,6 +63,14 @@ namespace BikeRental
                         MessageBox.Show("Wrong Username or Password", "Invalid account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtPassword.Clear();
                     }
+                }
+                else if (txtUsername.Text == "admin" && txtPassword.Text == "admin")
+                {
+                    timer1.Enabled = true;
+                    timer1.Start();
+                    timer1.Interval = 1;
+                    progressBar1.Maximum = 200;
+                    timer1.Tick += new EventHandler(timer1_Tick);
                 }
                 else
                 {
@@ -84,8 +100,6 @@ namespace BikeRental
                 adminManage add = new adminManage();
                 add.Show();
                 this.Hide();
-
-
             }
         }
 
