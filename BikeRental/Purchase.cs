@@ -107,9 +107,7 @@ namespace BikeRental
             txtRentID.Text = dataGridView1[0, e.RowIndex].Value.ToString();
             CbSelectBike.Text = dataGridView1[1, e.RowIndex].Value.ToString();
             txtDailyRate.Text = dataGridView1[2, e.RowIndex].Value.ToString();
-             txtStock.Text = dataGridView1[3, e.RowIndex].Value.ToString();
-
-
+            txtStock.Text = dataGridView1[3, e.RowIndex].Value.ToString();
 
         }      
 
@@ -143,10 +141,16 @@ namespace BikeRental
 
         private void btnSubtotal_Click(object sender, EventArgs e)
         {
-            double bikeno = Convert.ToDouble(txtBikeNo.Text);
+            double bikeno = 1;
+
+            if (txtBikeNo.Text != "")
+            {
+                bikeno = Convert.ToDouble(txtBikeNo.Text);
+            }
+
             double dailyrate = Convert.ToDouble(txtDailyRate.Text);
             double stocks = Convert.ToDouble(txtStock.Text);
-
+            txtBikeNo.Text = bikeno.ToString();
             try
             {
                 if (bikeno > stocks)
@@ -157,12 +161,8 @@ namespace BikeRental
                 else {
                     subtotal = bikeno * dailyrate;
                     txtSubtotal.Text = subtotal.ToString("N2");
-                    dgvPurchase.Rows.Add(txtRentID.Text, CbSelectBike.Text, txtDailyRate.Text, txtBikeNo.Text, txtSubtotal.Text);
-
+                    dgvPurchase.Rows.Add(txtRentID.Text, CbSelectBike.Text, txtDailyRate.Text, bikeno, txtSubtotal.Text);
                 }
-
-
-
             }
             catch
             {
@@ -196,7 +196,7 @@ namespace BikeRental
 
                     //sales master
                     string name2 = Convert.ToString(lblname.Text);
-                    sql = "Insert into sales_master values ('" + RentNo + "', '" + DateTime.Now.ToShortDateString() + "', '"+name2 + "')";
+                    sql = "Insert into Sales_Master values ('" + RentNo + "', '" + DateTime.Now.ToShortDateString() + "', '"+name2 + "')";
                     DBhelper.DBhelper.ModifyRecord(sql);
                     
 
@@ -212,7 +212,7 @@ namespace BikeRental
                         sql = "Insert into Rent_Details values ('" + RentNo + "', '" + bikes +"', '"+ dailyrate + "' , '"+ BikeNo + "' , '"+ total1 + "','" + name2 + "')";
                         DBhelper.DBhelper.ModifyRecord(sql);
 
-                        sql = "Update Stocks set stocks = stocks- '" + BikeNo + "'" + "Where bikes  = '" + bikes + "'";
+                        sql = "Update Stocks set stocks = stocks- '" + BikeNo + "'" + "Where Bikes  = '" + bikes + "'";
                         DBhelper.DBhelper.ModifyRecord(sql);
 
                     }

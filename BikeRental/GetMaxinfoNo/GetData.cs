@@ -75,7 +75,7 @@ namespace BikeRental.GetMaxinfoNo
         {
             try
             {
-                string sql = "Select MAX(RentNo) from sales_master";
+                string sql = "Select MAX(RentNo) from Sales_Master";
                 Connection.Connection.DB();
                 GlobalDeclaration.command = new OleDbCommand(sql, Connection.Connection.conn);
                 GlobalDeclaration.reader = GlobalDeclaration.command.ExecuteReader();
